@@ -1,0 +1,42 @@
+{
+  "urls": [
+    "https://en.wikipedia.org/wiki/Stripe,_Inc.",
+    "https://stripe.com/nz/newsroom/information"
+  ],
+  "prompt": "Extract the company information, including founders, products, and mission statement.",
+  "enableWebSearch": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "company": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "founders": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "description": { "type": "string" }
+              }
+            }
+          },
+          "mission": { "type": "string" }
+        },
+        "required": ["name", "founders", "mission"]
+      },
+      "supports_sso": { "type": "boolean" },
+      "is_publicly_listed": { "type": "boolean" }
+    },
+    "required": [
+      "company",
+      "supports_sso",
+      "is_publicly_listed"
+    ]
+  }
+}
